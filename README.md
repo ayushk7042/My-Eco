@@ -1,2 +1,3 @@
-# carbon-footprint-tracker
-calculate
+# My Eco Project
+
+This is my merged README content.
