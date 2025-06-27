@@ -36,16 +36,22 @@ router.post("/save", verifyToken, async (req, res) => {
 });
 
 // Get emission history for user
-router.get("/", verifyToken, async (req, res) => {
+// router.get("/", verifyToken, async (req, res) => {
+//   try {
+//     const emissions = await Emission.find({ userId: req.user.id }).sort({
+//       createdAt: -1,
+//     });
+//     res.status(200).json(emissions);
+//   } catch (err) {
+//     console.error("Error fetching emissions:", err);
+//     res.status(500).json({ error: err.message });
+ router.get("/", verifyToken, async (req, res) => {
   try {
-    const emissions = await Emission.find({ userId: req.user.id }).sort({
-      createdAt: -1,
-    });
-    res.status(200).json(emissions);
+    const emissions = await Emission.find({ userId: req.user.id });
+    res.json(emissions);
   } catch (err) {
-    console.error("Error fetching emissions:", err);
-    res.status(500).json({ error: err.message });
-  }
+    res.status(500).json({ error: "Failed to fetch emissions" });
+}
 });
 
 export default router;

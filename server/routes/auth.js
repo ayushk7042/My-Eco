@@ -5,6 +5,17 @@ import { signup, login } from "../controllers/authcontroller.js";
 
 const router = express.Router();
 
+// // routes/auth.js or authController.js
+// router.get('/me', authMiddleware, async (req, res) => {
+//   try {
+//     const user = await User.findById(req.user.id).select('-password');
+//     res.json(user);
+//   } catch (err) {
+//     res.status(500).json({ msg: 'Server error' });
+//   }
+// });
+
+
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/auth", async (req, res) => {

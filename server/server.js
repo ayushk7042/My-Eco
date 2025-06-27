@@ -31,10 +31,15 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
-
+import cityStatsRoutes from "./routes/cityStats.js";
 import emissionRoutes from './routes/emission.js';
 //app.use("/api/emissions", emissionRoutes);
+import plantRoutes from './routes/plants.js';
 
+//import emissionRoutes from './routes/emissionRoutes.js';
+import goalRoutes from "./routes/goal.js";
+//app.use("/api/goals", goalRoutes);
+import cityRoutes from "./routes/cityStats.js";
 // Load .env
 dotenv.config();
 
@@ -48,7 +53,16 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/emissions", emissionRoutes);
+app.use("/api/goals", goalRoutes);
+app.use("/api/cities", cityRoutes);
 
+app.use('/api/citystats', cityStatsRoutes);
+
+//app.use("/api/emissions", emissionRoutes);
+app.use("/api/city-emissions", cityStatsRoutes);
+
+app.use('/api/plants', plantRoutes);
+//app.use('/api/city-stats', cityStatsRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
